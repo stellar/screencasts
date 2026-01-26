@@ -1,0 +1,11 @@
+---
+# yaml-language-server: $schema=https://screenkit.dev/schemas/config.json
+
+# The episode title (displayed in intro scene).
+# Line breaks are inferred based on approximate text width.
+title: CREATING KEYPAIRS ON LABORATORY
+
+# Episode-specific overrides for global configuration.
+# Use an editor with JSON Schema support to see available options and
+# autocomplete.
+# Schema: https://screenkit.dev/schemas/config.json

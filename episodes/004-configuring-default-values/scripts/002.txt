@@ -1,0 +1,1 @@
+To set up the default network, you can use `stellar network use`.

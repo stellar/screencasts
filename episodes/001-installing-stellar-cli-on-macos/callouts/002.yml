@@ -1,0 +1,5 @@
+---
+- type: inline_block
+  text: https://brew.sh
+  duration: 5s
+  starts_at: 1s

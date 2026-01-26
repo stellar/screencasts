@@ -1,0 +1,7 @@
+Include "../../resources/config.tape"
+Include "resources/config.tape"
+
+Run "stellar --help | less"
+Sleep 3s
+Type "q"
+Sleep 1s

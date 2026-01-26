@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mfontanini/presenterm/master/config-file-schema.json
+---
+snippet:
+  exec:
+    enable: true
+
+options:
+  implicit_slide_ends: true
+  incremental_lists: true
+  list_item_newlines: 2
+  end_slide_shorthand: true
+
+defaults:
+  terminal_font_size: 30

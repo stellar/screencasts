@@ -1,0 +1,3 @@
+Many commands require you to specify certain values every time, like the dash dash network or dash dash source flags.
+
+Instead of typing those out again and again, you can set up default values for your configuration settings.

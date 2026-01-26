@@ -1,0 +1,10 @@
+Include "../../resources/config.tape"
+Include "resources/config.tape"
+
+Pause
+Send "bash resources/remove-stellar-cli.sh\n"
+WaitUntil /::ready::/
+Clear
+Resume
+
+Run@8s "brew install stellar-cli"

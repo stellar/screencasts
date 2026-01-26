@@ -1,0 +1,339 @@
+---
+# yaml-language-server: $schema=https://screenkit.dev/schemas/config.json
+
+# ScreenKit project configuration file.
+schema: 1
+
+# The episodes directory is where the source files for each episode are stored.
+# A new episode can be generated with `screenkit episode new`.
+#
+# The episode directory name can include placeholders:
+# - %{episode_number}: The episode number
+# - %{episode_slug}: A URL-friendly slug for the episode title
+# - %{date}: The current timestamp in `yyyy-mm-dd` format.
+#
+# You can have padded episodes number by using a format string that looks like
+# `%<episode_number>03d` (e.g. `001`).
+episode_dir: episodes/%<episode_number>03d-%{episode_slug}
+
+# The resources directory contains additional resource files used in the video.
+# These can include images, sounds, fonts, etc.
+# When defining your configuration, you can just specify the partial path. For
+# instance, if you have an image at `resources/images/picture.png`, you can just
+# refer to it as `images/picture.png`.
+#
+# You can also specify absolute paths, like system font directories.
+#
+# To point to the episode directory, use the placeholder `%{episode_dir}`.
+resources_dir:
+  - .
+  - "%{episode_dir}"
+  - resources
+  - "%{episode_dir}/resources"
+  - resources/backtracks
+  - "%{episode_dir}/resources/backtracks"
+  - resources/sounds
+  - "%{episode_dir}/resources/sounds"
+  - resources/images
+  - "%{episode_dir}/resources/images"
+  - resources/fonts
+  - "%{episode_dir}/resources/fonts"
+  - resources
+  - "%{episode_dir}/resources"
+  - ~/Library/Fonts
+  - /Library/Fonts
+  - /System/Library/Fonts
+  - ~/.fonts
+  - ~/.local/share/fonts
+  - /usr/share/fonts
+  - /usr/local/share/fonts
+  - /opt/share/fonts
+
+# The output directory is where the generated video files will be saved.
+# You can change this to any directory you prefer.
+#
+# To point to the episode directory's name, use the placeholder
+# `%{episode_dirname}`.
+output_dir: output/%{episode_dirname}
+
+# Set the backtrack file or directory.
+# When a directory is specified, a random backtrack will be chosen from the
+# directory.
+# When a file is specified, that specific backtrack will be used instead.
+#
+# The entry is searched by using the `resorces_dir` config.
+#
+# You can disable the backtrack by setting this to `false`.
+backtrack: backtracks/
+
+# Render a watermark.
+# This is useful for branding or copyright purposes.
+# The watermark is omitted from the intro and outro scenes.
+# To disable the watermark, use `watermark: false`.
+# watermark:
+#   path: "watermark.png"
+#   anchor: [right, bottom]
+#   margin: 100
+watermark: false
+
+# TTS configuration.
+# To disable voiceover entirely, set `tts: false` or disable all engines
+# individually.
+#
+# You can set up multiple TTS engines to be used as fallbacks in case one fails.
+# Each TTS engine has its own detection mechanism. For instance, say and espeak
+# checks for a binary with the same name. ElevenLabs checks for the presence of
+# `--tts-api-key`.
+#
+# You can have multiple presets for the same engine. Just set a different
+# configuration block using a different `id`. Then, when you're exporting the
+# video, you can use `--tts-preset <id>`. If you don't provide a preset, the
+# first available engine will be used.
+tts:
+  # Apple Say TTS engine configuration.
+  - id: say
+    engine: say
+    rate: 150
+    enabled: true
+
+  # Apple Say TTS engine configuration.
+  - id: say_pt_br
+    engine: say
+    voice: "Luciana"
+    rate: 150
+    enabled: true
+
+  # eSpeak TTS engine configuration.
+  - id: espeak
+    engine: espeak
+    rate: 150
+    voice: en-us
+    enabled: true
+
+  # Eleven Labs TTS engine configuration.
+  - id: eleven_labs
+    engine: eleven_labs
+    enabled: true
+    voice_id: KR1TkIhkSykEjI4B0DtH
+    language_code: en
+    voice_settings:
+      speed: 0.9
+      stability: 0.5
+      similarity: 0.75
+      style: 0.0
+
+  # Eleven Labs TTS engine configuration.
+  - id: eleven_labs_mp3_192k
+    engine: eleven_labs
+    enabled: true
+    voice_id: KR1TkIhkSykEjI4B0DtH
+    language_code: en
+    output_format: mp3_44100_192
+    voice_settings:
+      speed: 0.9
+      stability: 0.5
+      similarity: 0.75
+      style: 0.0
+
+# Scene configurations define how different scenes in the video are rendered.
+# There are three types of scenes: intro, outro, and segment.
+# - Intro: The opening scene of the video, typically featuring the logo.
+# - Outro: The closing scene of the video.
+# - Segment: The main content scenes of the video.
+scenes:
+  intro:
+    # The duration of the intro scene in seconds.
+    duration: 5.5s
+
+    # The fade-in duration in seconds.
+    fade_in: 0s
+
+    # The fade-out duration in seconds.
+    fade_out: 0.5s
+
+    # The background color/image of the intro scene.
+    background: "#000000"
+
+    # The title text to be displayed in the intro scene.
+    title:
+      x: 100
+      font_path: open-sans/OpenSans-ExtraBold.ttf
+      size: 144
+      color: "#ffffff"
+
+    url:
+      text: https://developers.stellar.org
+      font_path: open-sans/OpenSans-SemiBold.ttf
+      size: 36
+      color: "#ffffff80"
+
+    # The logo to be displayed in the video intro.
+    # Works best with a transparent PNG file in high resolution (at least 2x the
+    # size it'll be displayed).
+    logo:
+      path: logo.tiff
+      x: 100
+      width: 200
+
+    # The sound to be played along with the logo in the intro.
+    # This must correspond to a sound file in the sounds directory, with any
+    # audio extension (e.g. mp3, m4a, wav).
+    sound: false
+
+  outro:
+    # The duration of the outro scene in seconds.
+    duration: 5.5s
+
+    # The fade-in duration in seconds.
+    fade_in: 0.5s
+
+    # The fade-out duration in seconds.
+    fade_out: 0.5s
+
+    # The background color/image of the outro scene.
+    background: "#000000"
+
+    # The sound to be played along with the logo in the outro.
+    sound: chime.mp3
+
+    # The logo to be displayed in the video outro.
+    logo:
+      path: logo.tiff
+      x: center
+      y: center
+      width: 300
+
+  segment:
+    # The duration of the crossover transition between segments in seconds.
+    crossfade_duration: 0.5s
+
+# Configure [demotape](https://github.com/fnando/demotape).
+demotape:
+  # Global speed for typing
+  typing_speed: 50ms
+
+  # Whether to add variability to typing speed
+  variable_typing: 0.25
+
+  # Shell to use for the terminal session
+  shell: zsh
+
+  # Path to a shell rc file to source on startup
+  # rc_file:
+
+  # Do not load the default rc file
+  no_rc: false
+
+  # A built-in theme name or a path to a custom theme JSON file
+  theme: default_dark
+
+  # Font size for the terminal session
+  font_size: 32
+
+  # Font family for the terminal session
+  font_family: "'JetBrainsMono Nerd Font Propo', monospace"
+
+  # Line height for the terminal session
+  line_height: 1.2
+
+  # Whether the cursor blinks
+  cursor_blink: true
+
+  # The width of the cursor when in 'bar' style
+  cursor_width: 2
+
+  # The style of the cursor when the terminal is focused.
+  cursor_style: block
+
+  # Letter spacing for the terminal session
+  letter_spacing: 0
+
+  # Padding around the terminal content. It can be 1, 2, or 4 numbers.
+  padding: 50
+
+  # Loop the GIF infinitely
+  loop: true
+
+  # Delay time (in seconds) before restarting the GIF animation
+  loop_delay: 0
+
+  # Margin around the terminal content. It can be 1, 2, or 4 numbers.
+  margin: 0
+
+  # Color or image to use for the margin around the terminal content
+  margin_fill: "#000000"
+
+  # Border radius for the terminal canvas
+  border_radius: 0
+
+  # Delay (in seconds) before pressing Enter
+  run_enter_delay: 1s
+
+  # Delay (in seconds) after running each command
+  run_sleep: 3s
+
+# Callout configurations define the appearance and behavior of callouts used
+# in the video. Callouts are visual elements that highlight important
+# information. Each callout type can have its own settings for icon, background,
+# text styles, animations, and sounds.
+callout_styles:
+  shadow_block:
+    # yaml-language-server: $schema=https://screenkit.dev/schemas/callout_styles/default.json
+    style: shadow_block
+    background_color: "#ffff00"
+    shadow: "#2242d3"
+    title_style:
+      color: "#000000"
+      size: 40
+      font_path: open-sans/OpenSans-ExtraBold.ttf
+    body_style:
+      color: "#000000"
+      size: 32
+      font_path: open-sans/OpenSans-Semibold.ttf
+    margin: 100
+    padding: 50
+    anchor: [left, bottom]
+    animation: fade
+    in_transition:
+      duration: 0.4s
+      sound: pop.mp3
+    out_transition:
+      duration: 0.3s
+      sound:
+        path: pop.mp3
+        volume: 0.7
+
+  inline_block:
+    # yaml-language-server: $schema=https://screenkit.dev/schemas/callout_styles/inline_block.json
+    style: inline_block
+    anchor: [left, bottom]
+    background_color: "#ffffff"
+    text_style:
+      color: "#000000"
+      size: 32
+      font_path: open-sans/OpenSans-ExtraBold.ttf
+    margin: 100
+    animation: fade
+    in_transition:
+      duration: 0.4s
+      sound: pop.mp3
+    out_transition:
+      duration: 0.4s
+      sound: pop.mp3
+
+  social:
+    style: social
+    anchor: [left, bottom]
+    margin: 100
+    animation: fade
+    in_transition:
+      duration: 0.4s
+      sound: pop.mp3
+    out_transition:
+      duration: 0.4s
+      sound: pop.mp3
+
+playwright:
+  color_scheme: dark
+  state_path: "playwright_state.json"
+  user_data_path: "playwright_user_data"
