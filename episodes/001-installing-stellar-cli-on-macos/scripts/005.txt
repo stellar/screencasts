@@ -1,0 +1,1 @@
+There's also a very handy tool called `stellar doctor`, that displays information about your current system.

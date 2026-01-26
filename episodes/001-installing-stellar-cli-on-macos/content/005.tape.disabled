@@ -1,0 +1,5 @@
+Include "../../resources/config.tape"
+Include "resources/config.tape"
+
+Run "stellar doctor"
+Sleep 5s

@@ -1,0 +1,3 @@
+To view your current environment, use the command `stellar env`.
+
+If set, this will display the current configuration settings for your Stellar environment.

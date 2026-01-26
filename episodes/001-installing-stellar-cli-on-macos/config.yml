@@ -1,0 +1,9 @@
+---
+# yaml-language-server: $schema=https://screenkit.dev/schemas/config.json
+
+# The episode title. When there are no linebreaks, they will be inferred based
+# on the approximate text width.
+title: |
+  INSTALLING
+  STELLAR CLI
+  ON MACOS

@@ -1,0 +1,1 @@
+Once you have everything installed, you need to restart Windows Terminal.

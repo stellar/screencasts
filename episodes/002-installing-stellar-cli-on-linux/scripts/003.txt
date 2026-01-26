@@ -1,0 +1,1 @@
+You can also see all the available options by running `stellar dash dash help`.

@@ -1,0 +1,13 @@
+The Stellar Lab is an interactive toolkit for exploring the Stellar network.
+
+When interacting with the Stellar Lab, you'll need to create a keypair to have a public and private key for your Stellar account.
+<break time="2.0s" />
+To create one, on the sidebar, go to Account, then Create Account Keypair.
+<break time="1.0s" />
+To randomly generate new credentials, click the generate button.
+<break time="1.0s" />
+You can save them to use later by clicking on save keypair.
+<break time="2.0s" />
+Now, you'll need to fund the account. In development, you can use the Friendbot tool. Just click on the fund button and your account will be created with 10 thousand lumens.
+<break time="4.0s" />
+To view all your saved keypairs, go to the "Saved" section on the sidebar.

@@ -1,0 +1,4 @@
+Include "../../resources/config.tape"
+
+Run "which stellar"
+Run "stellar --version"

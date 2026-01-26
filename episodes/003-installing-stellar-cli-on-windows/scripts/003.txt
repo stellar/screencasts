@@ -1,0 +1,2 @@
+Now you can use the command `stellar`.  For instance, to view which version you have installed, use `stellar dash dash version`.
+
