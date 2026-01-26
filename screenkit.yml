@@ -61,7 +61,7 @@ output_dir: output/%{episode_dirname}
 # directory.
 # When a file is specified, that specific backtrack will be used instead.
 #
-# The entry is searched by using the `resorces_dir` config.
+# The entry is searched by using the `resources_dir` config.
 #
 # You can disable the backtrack by setting this to `false`.
 backtrack: backtracks/
@@ -289,7 +289,7 @@ callout_styles:
     body_style:
       color: "#000000"
       size: 32
-      font_path: open-sans/OpenSans-Semibold.ttf
+      font_path: open-sans/OpenSans-SemiBold.ttf
     margin: 100
     padding: 50
     anchor: [left, bottom]
