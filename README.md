@@ -1,2 +1,3 @@
-# stellar-cli-screencasts
-The content for Stellar CLI screencasts.
+# screencasts
+
+The content for Stellar screencasts.
