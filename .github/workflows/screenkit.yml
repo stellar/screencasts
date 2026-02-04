@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run Screenkit
-        uses: fnando/screenkit@3f4c0f0b6c1e8b0b2c8e6d7135c2a9f6e8f6fd0b
+        uses: fnando/screenkit@c35c62aaa833c03e5a98080e51d4d1b9c6f996c2
         with:
           episode: ${{ github.event.inputs.episode }}
           tts_preset: ${{ github.event.inputs.tts_preset }}
